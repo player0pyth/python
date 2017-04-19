@@ -1,18 +1,21 @@
 
 from snmp_helper import snmp_get_oid, snmp_extract
 
-COMMUNITY_STRING = 'galileo'
-SNMP_PORT = 161
-IP = '184.105.247.70'
 
-a_device = (IP, COMMUNITY_STRING, SNMP_PORT)
+def main():
+ COMMUNITY_STRING = 'galileo'
+ SNMP_PORT = 161
+ IP = '184.105.247.70'
 
-OID = '1.3.6.1.2.1.1.5.0'
+ a_device = (IP, COMMUNITY_STRING, SNMP_PORT)
 
-snmp_data = snmp_get_oid(a_device, oid=OID)
+ OID = '1.3.6.1.2.1.1.5.0'
 
-output = snmp_extract(snmp_data)
+ snmp_data = snmp_get_oid(a_device, oid=OID)
 
-print output
+ output = snmp_extract(snmp_data)
 
+ print output
 
+if __name__ == "__main__":
+ main()
