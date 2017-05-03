@@ -1,0 +1,7 @@
+---
+switches:
+ - { hostname: access_switch1, secret: <secret>, access_vlan: 10, ip_addr: 10.1.1.10, default_gateway: 10.1.1.1, snmp_community: <community>, SNMPv3: True}
+ - { hostname: access_switch2, secret: <secret>, access_vlan: 10, ip_addr: 10.1.1.20, default_gateway: 10.1.1.2, snmp_community: <community>, SNMPv3: False}
+ - { hostname: access_switch3, secret: <secret>, access_vlan: 10, ip_addr: 10.1.1.30, default_gateway: 10.1.1.3, snmp_community: <community>, SNMPv3: False}
+ - { hostname: access_switch4, secret: <secret>, access_vlan: 10, ip_addr: 10.1.1.40, default_gateway: 10.1.1.4, snmp_community: <community>, SNMPv3: False}
+ - { hostname: access_switch5, secret: <secret>, access_vlan: 10, ip_addr: 10.1.1.50, default_gateway: 10.1.1.5, snmp_community: <community>, SNMPv3: False} 
