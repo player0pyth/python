@@ -1,0 +1,23 @@
+---
+
+- name: To create interface description on Arista
+  hosts: arista
+  
+  tasks:
+    
+    - name: create description on the interface Eth5
+      eos_interface: name=Ethernet5 description="***IN USE***"
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
+
+    
+    - name: add vlan to the interface Eth5
+      eos_switchport: name=Ethernet5 mode=access access_vlan=247
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https

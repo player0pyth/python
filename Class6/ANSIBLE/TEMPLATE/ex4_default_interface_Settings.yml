@@ -1,0 +1,34 @@
+---
+
+- name: To create interface description on Arista
+  hosts: arista
+  
+  tasks:
+    - name: create description on the interface Eth5
+      eos_interface: name=Ethernet5 description=''
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
+    
+    - name: configure eth5 as trunk
+      eos_switchport: name=Ethernet5 mode=access access_vlan=1 trunk_allowed_vlans=1-4094
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
+   
+    - name: remove vlans 247, 248, 249
+      eos_vlan: name={{item.vlan_name}} vlanid={{item.vlan_id}} state=absent
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
+
+      with_items:
+             - {vlan_name: Test1, vlan_id: 247}
+             - {vlan_name: Test2, vlan_id: 248}
+             - {vlan_name: Test3, vlan_id: 249}

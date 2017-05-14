@@ -1,0 +1,13 @@
+---
+
+- name: To create interface description on Arista
+  hosts: arista
+  
+  tasks:
+    - name: configure eth5 as trunk.
+      eos_switchport: name=Ethernet5 mode=trunk trunk_native_vlan=1 trunk_allowed_vlans=247,248,249
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
